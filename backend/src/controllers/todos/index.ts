@@ -1,14 +1,13 @@
 import { Response, Request } from 'express';
-
-import { ITodo } from '../../types/todo';
+import { ITodo } from './../../types/todo';
 import Todo from '../../models/todo';
 
 const getTodos = async (req: Request, res: Response): Promise<void> => {
   try {
     const todos: ITodo[] = await Todo.find();
     res.status(200).json({ todos });
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -28,8 +27,8 @@ const addTodo = async (req: Request, res: Response): Promise<void> => {
     res
       .status(201)
       .json({ message: 'Todo added', todo: newTodo, todos: allTodos });
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    throw error;
   }
 };
 
